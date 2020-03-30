@@ -1,4 +1,6 @@
 import { StateManager } from './stateManager.js'
+import { Gold } from './objects.js';
+import { loader } from './assetLoader.js'
 
 class Game {
     constructor(canvasId) {
@@ -21,7 +23,18 @@ class Game {
     }
 
     initialise() {
+        //variables
+        this.player = this.stateManager.states.gameState.objects[2];
+        this.cart = this.stateManager.states.gameState.objects[3];
+
+        //functions to run before game
+        //TODO change this value to map specific
+        this.spawnObjects(3);
+
         //event listeners
+        window.addEventListener('keydown', (ev) => {
+            this.move(ev);
+        }, true)
     }
 
     clear() {
@@ -30,6 +43,9 @@ class Game {
 
     update() {
         //handle movement and interactions
+        //checkCollision();
+        //updateTime();
+        this.checkForGameOver();
     }
 
     render() {
@@ -43,6 +59,35 @@ class Game {
             this.render();
             this.gameLoop();
         })
+    }
+
+    move(ev) {
+        switch (ev.keyCode) {
+            case 37:
+                //move left
+                this.player.move(-1)
+                this.cart.move(-1)
+                break;
+            case 39:
+                //move right
+                this.player.move(+1)
+                this.cart.move(+1)
+                break;
+            default:
+                break;
+        }
+    }
+
+    checkForGameOver() {
+        if (this.player.getX() < 0 || this.player.getX() > (this.canvas.width - this.player.getWidth())) {
+            console.log("GAMEOVER")
+        }
+    }
+
+    spawnObjects(count) {
+        for (var i = 0; i < count; i++) {
+            this.stateManager.states.gameState.objects.push(new Gold(Math.random() * (this.canvas.width - 100) + 100, Math.random() * (this.canvas.height - 250) + 200, 70, 70, loader.getImage("gold")));
+        }
     }
 }
 

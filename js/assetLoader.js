@@ -3,8 +3,11 @@ export class ResourceLoader {
         this.assets = new Map();
         this.images = [
             { name: 'background', src: '../assets/img/bg.png' },
+            { name: 'mapBg', src: '../assets/img/mapBg.png' },
             { name: 'player', src: '../assets/img/character.png' },
-            { name: 'map', src: '../assets/img/map.png' }
+            { name: 'cart', src: '../assets/img/cart.png' },
+            { name: 'map', src: '../assets/img/map.png' },
+            { name: 'gold', src: '../assets/img/gold.png' }
         ]
     }
 

@@ -43,3 +43,49 @@ export class Text extends Object {
         ctx.fillText(this.text, this.x, this.y);
     }
 }
+
+export class Player extends Object {
+    constructor(x, y, width, height, image) {
+            super(x, y, width, height, image);
+            this.image = image;
+            this.money = 0;
+            this.stage = 0;
+            this.speed = 3;
+        }
+        //static x = this.x;
+
+    render(ctx) {
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
+
+    move(distance) {
+        this.x += distance * this.speed;
+    }
+
+    getX() {
+        return this.x;
+    }
+
+    getWidth() {
+        return this.width;
+    }
+}
+
+export class Cart extends Player {
+    constructor(x, y, width, height, image) {
+        super(x, y, width, height, image);
+    }
+    render(ctx) {
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
+
+    move(distance) {
+        this.x += distance * this.speed;
+    }
+
+    getX() {
+        return this.x;
+    }
+}
+
+export class Gold extends Sprite {}
