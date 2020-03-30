@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
     font-family: 'Balthazar', ;
 }
 
-body{
-    background-image: url(../../assets/img/bg.png);
+body {
+    // background-image: url(../../assets/img/bg.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,12 +14,12 @@ body{
     overflow: hidden;
 }
 
-.gameArea{
+.gameArea {
     width: 100vw;
     height: 100vh;
 }
 
-h1{
+h1 {
     text-transform: uppercase;
     color: black;
     position: absolute;
@@ -29,7 +29,7 @@ h1{
     font-size: 2.5em;
 }
 
-button{
+button {
     display: block;
     border: 12px solid #FF6A00;
     border-radius: 15px;
@@ -43,20 +43,20 @@ button{
     transition: .2s;
     cursor: pointer;
     position: absolute;
-    &:hover{
+    &:hover {
         color: orange;
     }
-    &[id=splashStart]{
+    &[id=splashStart] {
         top: 250px;
         left: 220px;
     }
-    &[id=splashShop]{
+    &[id=splashShop] {
         top: 380px;
         left: 220px;
     }
 }
 
-.settings{
+.settings {
     width: 70px;
     height: 70px;
     line-height: 70px;
@@ -68,19 +68,19 @@ button{
     position: absolute;
     top: 510px;
     left: 420px;
-    i{
+    i {
         margin-top: 7px;
         display: inline-block;
         font-size: 3.5em;
         transition: .2s ease-in-out;
         cursor: pointer;
-        &:hover{
+        &:hover {
             color: rgb(53, 53, 53);
         }
     }
 }
 
-.splashCharacter{
+.splashCharacter {
     width: 580px;
     height: 660px;
     background-image: url(../../assets/img/splashCharacter.png);
