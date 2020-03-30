@@ -4,6 +4,18 @@
     font-family: 'Balthazar', ;
 }
 
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    display: block;
+}
+
+
+/*
 body {
     // background-image: url(../../assets/img/bg.png);
     background-size: cover;
@@ -90,4 +102,4 @@ button {
     position: absolute;
     right: 260px;
     top: 80px;
-}
+}*/

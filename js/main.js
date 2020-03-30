@@ -2,9 +2,14 @@ import { StateManager } from './stateManager.js'
 
 class Game {
     constructor(canvasId) {
-        this.stateManager = new StateManager();
         this.canvas = document.getElementById(canvasId);
-        console.log(canvasId);
+        //this.canvas.width = document.body.clientWidth;
+        //this.canvas.height = document.body.clientHeight;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+
+        this.stateManager = new StateManager(this.canvas);
+
         const ctx = this.canvas.getContext('2d');
         this.ctx = ctx;
     }
@@ -33,10 +38,7 @@ class Game {
     }
 
     gameLoop() {
-        // requestAnimationFrame(gameLoop);
-        //this.gameLoop();
         requestAnimationFrame(() => {
-            console.log("frame");
             this.update();
             this.render();
             this.gameLoop();
@@ -46,4 +48,3 @@ class Game {
 
 const game = new Game('gameArea');
 game.start();
-//pass context and canvas id to other params
