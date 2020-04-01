@@ -7,7 +7,8 @@ export class ResourceLoader {
             { name: 'player', src: '../assets/img/character.png' },
             { name: 'cart', src: '../assets/img/cart.png' },
             { name: 'map', src: '../assets/img/map.png' },
-            { name: 'gold', src: '../assets/img/gold.png' }
+            { name: 'gold', src: '../assets/img/gold.png' },
+            { name: 'diamond', src: '../assets/img/diamond.png' }
         ]
     }
 

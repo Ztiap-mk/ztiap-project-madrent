@@ -1,4 +1,4 @@
-import { Text, Sprite, Player, Cart } from './objects.js'
+import { Text, Sprite, Player, Cart, Button } from './objects.js'
 import { loader } from './assetLoader.js'
 
 class Base {
@@ -19,6 +19,7 @@ export class MenuState extends Base {
         this.objects = [
             new Sprite(0, 0, this.canvas.width, this.canvas.height, loader.getImage("background")),
             new Text(this.canvas.width / 2 - 115, 100, "Epic Miner Game", "#000000", "bold 35px Balthazar"),
+            new Button(this.canvas.width / 2 - 100, 300, 200, 100, "#7F3300", "#FF6A00", "Start Game", "newGame") //TODO start game function passing
         ];
     }
 }

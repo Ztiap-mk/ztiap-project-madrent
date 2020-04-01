@@ -1,3 +1,5 @@
+import { loader } from './assetLoader.js'
+
 export class Object {
     constructor(x, y, width, height) {
         this.x = x;
@@ -5,6 +7,7 @@ export class Object {
         this.width = width;
         this.height = height;
     }
+    onclick() {};
 }
 
 export class Sprite extends Object {
@@ -88,4 +91,51 @@ export class Cart extends Player {
     }
 }
 
-export class Gold extends Sprite {}
+export class Gold extends Sprite {
+    onclick() {
+        this.image = loader.getImage("diamond");
+        this.width = 46;
+        this.height = 37;
+        return "GOLD";
+    }
+}
+
+export class Button extends Object {
+    constructor(x, y, width, height, primaryColor, secondaryColor, text, functionToRun) {
+        super(x, y, width, height);
+        this.primaryColor = primaryColor;
+        this.secondaryColor = secondaryColor;
+        this.text = text;
+        this.functionToRun = functionToRun;
+        this.shadowBlur = 3;
+    }
+
+    render(ctx) {
+        //TODO remake this with quadraticCurveTo() and fill()
+        ctx.save();
+        ctx.shadowBlur = this.shadowBlur;
+        ctx.shadowColor = this.secondaryColor;
+        ctx.fillStyle = this.secondaryColor;
+
+        //shadow
+        ctx.fillRect(this.x - this.shadowBlur, this.y - this.shadowBlur, this.width + this.shadowBlur * 2, this.height + this.shadowBlur * 2);
+
+        //main bg
+        ctx.fillStyle = this.primaryColor;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+
+        //text on the button
+        ctx.font = "bold 30px Balthazar";
+        ctx.fillStyle = "#FFFFFF";
+        ctx.shadowBlur = 0;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(this.text, this.x + this.width / 2, this.y + this.height / 2);
+
+        ctx.restore();
+    }
+
+    onclick() {
+        return this.functionToRun;
+    }
+}

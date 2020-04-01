@@ -16,7 +16,7 @@ export class StateManager {
         }
         this.currentState = this.states.menuState;
         //FOR TESTING RIGHT TO GAMESTATE
-        this.currentState = this.states.gameState;
+        //this.currentState = this.states.gameState;
     }
     render(ctx) {
         this.currentState.render(ctx);
