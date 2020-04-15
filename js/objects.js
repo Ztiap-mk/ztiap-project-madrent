@@ -1,4 +1,6 @@
 import { loader } from './assetLoader.js'
+import { sounds } from './soundManager.js'
+import * as Misc from './functions.js'
 
 export class Object {
     constructor(x, y, width, height) {
@@ -7,7 +9,37 @@ export class Object {
         this.width = width;
         this.height = height;
     }
+    handleEvent(ev) {
+        if (this.isClicked(ev))
+            this.onclick();
+    }
+
     onclick() {};
+
+    isClicked(ev) {
+        const mX = ev.offsetX;
+        const mY = ev.offsetY;
+
+        if (mX >= this.x && mX <= this.x + this.width && mY >= this.y && mY <= this.y + this.height) {
+            return true;
+        }
+        return false;
+    }
+}
+
+export class BackgroundWithOpacity extends Object {
+    constructor(x, y, width, height, color, opacity) {
+        super(x, y, width, height);
+        this.color = color;
+        this.opacity = opacity;
+    }
+    render(ctx) {
+        ctx.save();
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.opacity;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.restore();
+    }
 }
 
 export class Sprite extends Object {
@@ -101,13 +133,14 @@ export class Gold extends Sprite {
 }
 
 export class Button extends Object {
-    constructor(x, y, width, height, primaryColor, secondaryColor, text, functionToRun) {
+    constructor(x, y, width, height, primaryColor, secondaryColor, text, functionToRun, textColor = "#FFFFFF") {
         super(x, y, width, height);
         this.primaryColor = primaryColor;
         this.secondaryColor = secondaryColor;
         this.text = text;
         this.functionToRun = functionToRun;
         this.shadowBlur = 3;
+        this.textColor = textColor;
     }
 
     render(ctx) {
@@ -126,7 +159,7 @@ export class Button extends Object {
 
         //text on the button
         ctx.font = "bold 30px Balthazar";
-        ctx.fillStyle = "#FFFFFF";
+        ctx.fillStyle = this.textColor;
         ctx.shadowBlur = 0;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -137,5 +170,89 @@ export class Button extends Object {
 
     onclick() {
         return this.functionToRun;
+    }
+}
+
+export class SettingsButton extends Sprite {
+    constructor(x, y, width, height, image, partial, manager) {
+        super(x, y, width, height, image, partial, manager);
+        this.manager = manager;
+    }
+
+    onclick() {
+        this.manager.changeState('settingsState');
+    }
+}
+
+export class QuestionButton extends Sprite {
+    constructor(x, y, width, height, image, partial, manager, canvas) {
+        super(x, y, width, height, image, partial, manager, canvas);
+        this.manager = manager;
+        this.canvas = canvas;
+    }
+
+    onclick() {
+        this.manager.currentState.objects.push(new InstructionsButton(this.canvas.width - 80, 75, 60, 58, loader.getImage("questionButton"), "no", this.manager));
+        //TODO add more buttons
+    }
+}
+
+export class InGameSettingsButton extends Sprite {
+    constructor(x, y, width, height, image, partial, manager) {
+        super(x, y, width, height, image, partial, manager);
+        this.manager = manager;
+    }
+    onclick() {
+        //TODO back to menu, enter settings etc...
+    }
+}
+
+export class InstructionsButton extends Sprite {
+    constructor(x, y, width, height, image, partial, manager) {
+        super(x, y, width, height, image, partial, manager);
+        this.manager = manager;
+    }
+    onclick() {
+        //TODO show instructions
+        if (document.getElementsByClassName("instructions")[0].style.display == "none") {
+            document.getElementsByClassName("instructions")[0].style.display = "block";
+        } else {
+            console.log("instructions");
+            document.getElementsByClassName("instructions")[0].style.display = "none";
+        }
+    }
+}
+
+export class BackButton extends Sprite {
+    constructor(x, y, width, height, image, partial, manager, toState) {
+        super(x, y, width, height, image, partial, manager);
+        this.manager = manager;
+        this.newState = toState;
+    }
+
+    onclick() {
+        this.manager.changeState(this.newState);
+    }
+}
+
+export class SoundButton extends Sprite {
+    constructor(x, y, width, height, image, partial, manager, toState) {
+        super(x, y, width, height, image, partial, manager);
+        this.manager = manager;
+        this.toState = toState;
+    }
+
+    onclick() {
+        /*if (Misc.getCookie("sound") == "yes") {
+            Misc.setCookie("sound", "no", 7);
+            this.manager.soundManager.stopTrack();
+        } else {
+            Misc.setCookie("sound", "yes", 7);
+            this.manager.soundManager.playTrack();
+        }*/
+        if (this.toState == "on")
+            sounds.playTrack();
+        else
+            sounds.stopTrack();
     }
 }

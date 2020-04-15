@@ -36,9 +36,9 @@ class Game {
         }, true)
 
         window.addEventListener('click', (ev) => {
-            console.log(this.stateManager.currentState.objects);
-            setTimeout(this.checkClick(ev), 200);
-            console.log(this.stateManager.currentState.objects);
+            //setTimeout(this.checkClick(ev), 200);
+            this.checkClick(ev);
+            //console.log(this.stateManager.currentState.objects);
         }, true)
     }
 
@@ -94,6 +94,9 @@ class Game {
     }
 
     async checkClick(event) {
+        this.stateManager.handleEvent(event);
+
+        //TODO have to place this code into the objects class
         var x = event.pageX - this.canvas.offsetLeft;
         var y = event.pageY - this.canvas.offsetTop;
         for (var i in this.stateManager.currentState.objects) {
@@ -114,6 +117,12 @@ class Game {
                     case "GOLD":
                         //handle gold click
                         console.log("GOLD")
+                        break;
+                    case "enterShop":
+                        console.error("Not yet implemented..."); //TODO implement this
+                        break;
+                    case "misc":
+                        //just some random stuff, dont have to implement it
                         break;
                 }
             }
