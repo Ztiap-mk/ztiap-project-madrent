@@ -1,4 +1,6 @@
 //CODE FROM https://www.w3schools.com/js/js_cookies.asp
+import { sounds } from '../managers/soundManager.js'
+
 export function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -20,4 +22,14 @@ export function getCookie(cname) {
         }
     }
     return "";
+}
+
+
+//expose functions to global scope
+window.playSounds = function playSounds() {
+    sounds.playAllTrack();
+}
+
+window.stopSounds = function stopSounds() {
+    sounds.stopAllTrack();
 }

@@ -13,7 +13,7 @@
 
 <body>
     <canvas id="gameArea"></canvas>
-    <div class="instructions">
+    <div class="instructions" style="display: none;">
         <p>Controls</p>
         <ul>
             <li>
@@ -25,9 +25,15 @@
             <li>
                 <p>USE ITEM</p><img src="assets/img/enterButton.png" alt="enter key">
             </li>
+            <li id="placeholder">
+                <!-- Placeholder for buttons created in JS -->
+                <div onclick="playSounds()"></div>
+                <div id="offSound" onclick="stopSounds()"></div>
+            </li>
         </ul>
     </div>
-    <script src="js/main.js" type="module"></script>
+    <script src="js/src/main.js" type="module"></script>
+    <script src="js/src/helpers/functions.js" type="module"></script>
 </body>
 
 </html>

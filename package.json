@@ -1,0 +1,25 @@
+{
+  "name": "jsGame",
+  "version": "1.0.0",
+  "description": "This repo contains my adoptation of the game GoldMiner created in ES2018.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ztiap-mk/ztiap-project-madrent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ztiap-mk/ztiap-project-madrent/issues"
+  },
+  "homepage": "https://github.com/Ztiap-mk/ztiap-project-madrent#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}

@@ -1,7 +1,7 @@
-import { MenuState, GameState, SettingsState } from './states.js'
+import { MenuState, GameState, SettingsState, ScoreState } from '../states.js'
 import { loader } from './assetLoader.js'
 import { SoundManager } from './soundManager.js'
-import * as Misc from './functions.js'
+import * as Misc from '../helpers/functions.js'
 
 export class StateManager {
     constructor(canvas) {
@@ -17,6 +17,7 @@ export class StateManager {
             menuState: new MenuState(this, this.canvas),
             gameState: new GameState(this, this.canvas),
             settingsState: new SettingsState(this, this.canvas),
+            scoreState: new ScoreState(this, this.canvas),
         }
         this.currentState = this.states.menuState;
         Misc.setCookie("sound", "yes", 7);
@@ -31,7 +32,11 @@ export class StateManager {
         this.currentState.render(ctx);
     }
 
-    handleEvent(ev) {
-        this.currentState.handleEvent(ev);
+    handleEvent(ev, game) {
+        this.currentState.handleEvent(ev, game);
+    }
+
+    getCollision(x, y) {
+        return this.currentState.getCollision(x, y);
     }
 }

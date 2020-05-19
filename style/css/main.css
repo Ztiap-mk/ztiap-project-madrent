@@ -22,7 +22,6 @@ canvas {
   top: 35%;
   border-radius: 15px;
   padding: 25px;
-  display: none;
 }
 
 .instructions p {
@@ -57,5 +56,24 @@ canvas {
   float: right;
   margin-top: 5px;
   height: 55px;
+}
+
+.instructions li[id=placeholder] {
+  height: 80px;
+  border-bottom: 0px;
+}
+
+.instructions li[id=placeholder] div {
+  margin-top: 10px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-image: url("../../assets/img/sound1Button.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.instructions li[id=placeholder] div[id=offSound] {
+  background-image: url("../../assets/img/noSound1Button.png");
 }
 /*# sourceMappingURL=main.css.map */
