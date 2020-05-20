@@ -126,7 +126,7 @@ class Misc {
             }
 
             if (moveEntity > 0) {
-                game.stateManager.states.gameState.objects[moveEntity].setX(anchorX); // - game.stateManager.states.gameState.objects[moveEntity].getWidth() / 2); I dont know if this looks better
+                game.stateManager.states.gameState.objects[moveEntity].setX(anchorX);
                 game.stateManager.states.gameState.objects[moveEntity].setY(anchorY);
             }
 

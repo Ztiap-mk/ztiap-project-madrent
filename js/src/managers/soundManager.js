@@ -11,11 +11,6 @@ export class SoundManager {
         this.playTrack(name);
     }
     addTrack(name) {
-        //TODO detect if audio ends and destroy it
-        /*var aud = { "name": name, "track": this.currentTrack };
-        aud.onended = function() {
-            console.log("ended: " + aud.name);
-        }*/
         this.tracksPlaying.push({ "name": name, "track": this.currentTrack });
     }
 

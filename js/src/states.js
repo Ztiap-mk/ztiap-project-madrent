@@ -41,7 +41,7 @@ class Base {
 export class MenuState extends Base {
     constructor(manager, canvas) {
         super(manager, canvas);
-        const startGameButton = new Button(this.canvas.width / 2 - 350, 300, 200, 100, "#7F3300", "#FF6A00", "Start Game", "newGame"); //TODO ~start game function passing
+        const startGameButton = new Button(this.canvas.width / 2 - 350, 300, 200, 100, "#7F3300", "#FF6A00", "Start Game", "newGame");
         const shopButton = new Button(this.canvas.width / 2 - 350, 450, 200, 100, "#bf997f", "#d8c1b2", "SHOP", "enterShop");
         const settingsButton = new SettingsButton(this.canvas.width / 2 - 210, 600, 61, 58, loader.getImage("settingsBtn"), "no", manager);
 
@@ -53,7 +53,7 @@ export class MenuState extends Base {
             shopButton,
             settingsButton
         ];
-        //sounds.setTrack('mainTheme');
+        sounds.setTrack('mainTheme');
     }
 }
 

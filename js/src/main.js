@@ -1,7 +1,4 @@
 import { StateManager } from './managers/stateManager.js'
-//import { Gold, Button } from './objects.js';
-//import { loader } from './managers/assetLoader.js'
-//import { sounds } from './managers/soundManager.js'
 import { misc } from './helpers/misc.js'
 import { DifficultyManager } from './managers/difficulty.js'
 import { DayManager } from './managers/dayManager.js'

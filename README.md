@@ -8,7 +8,7 @@ Use {left}, {right} arrow keys to move the character. Press {space} to shoot the
 
 ### How to run
 
-Clone or download and then drop the index.html file into any webplayer.
+Clone or download and then host it on a local server. (VSCode live server extension, xampp, wamp, windows IIS)
 
 ### Known bugs
 

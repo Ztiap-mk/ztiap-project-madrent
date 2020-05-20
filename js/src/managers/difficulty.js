@@ -10,7 +10,6 @@ export class DifficultyManager {
     }
     async init() {
         this.parsedData = this.loadData(this.file);
-        //this.setupDay(1);
     }
 
     loadData(file) {

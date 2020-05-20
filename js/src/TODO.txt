@@ -15,3 +15,7 @@ TODO LIST
 13. Correct hit detection at diamonds   /? 
 14. Animation                           //
 15. Diamond, gameOver sound             //
+16. QuadraticCurve buttons
+17. Make sound buttons to toggle mode
+18. Animation of the achieved day
+19. Destroy sounds after they end

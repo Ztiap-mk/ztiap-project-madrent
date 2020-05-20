@@ -91,7 +91,6 @@ export class Sprite extends Object {
 
             ctx.drawImage(this.image, this.x, this.y, renderableWidth, this.height);
         }
-        //TODO clipping and too big images are a huge drawback
     }
 }
 
@@ -118,9 +117,6 @@ export class Anchor extends Sprite {
         ctx.beginPath();
         ctx.moveTo(game.anchorLine.getX(), game.anchorLine.getY());
         ctx.translate(this.x + this.width / 2, this.y + 10);
-        // ctx.arc(0, 0, 5, 0, 2 * Math.PI);
-        // ctx.fillStyle = 'blue';
-        // ctx.fill();
         ctx.lineWidth = 2;
         ctx.rotate(this.rotation * Math.PI / 180);
         ctx.lineTo(-this.width / 2 + 9, +10);
@@ -150,14 +146,13 @@ export class Text extends Object {
 
 export class Player extends Object {
     constructor(x, y, width, height, image) {
-            super(x, y, width, height, image);
-            this.image = image;
-            this.money = 0;
-            this.stage = 0;
-            this.speed = 3;
-            this.frame = 0;
-        }
-        //static x = this.x;
+        super(x, y, width, height, image);
+        this.image = image;
+        this.money = 0;
+        this.stage = 0;
+        this.speed = 3;
+        this.frame = 0;
+    }
 
     render(ctx) {
         ctx.drawImage(this.image, this.frame * 67, 0, 67, 122, this.x, this.y, this.width, this.height);
@@ -263,7 +258,6 @@ export class Button extends Object {
     }
 
     render(ctx) {
-        //TODO remake this with quadraticCurveTo() and fill()
         ctx.save();
         ctx.shadowBlur = this.shadowBlur;
         ctx.shadowColor = this.secondaryColor;
@@ -346,7 +340,6 @@ export class QuestionButton extends Sprite {
             this.manager.currentState.objects.pop();
             this.isSeen = false;
         }
-        //TODO add more buttons
     }
 }
 
@@ -363,7 +356,7 @@ class ReloadButton extends Sprite {
     }
 }
 
-export class InGameSettingsButton extends Sprite {
+/*export class InGameSettingsButton extends Sprite {
     constructor(x, y, width, height, image, partial, manager) {
         super(x, y, width, height, image, partial, manager);
         this.manager = manager;
@@ -371,7 +364,7 @@ export class InGameSettingsButton extends Sprite {
     onclick() {
         //TODO back to menu, enter settings etc...
     }
-}
+}*/
 
 export class InstructionsButton extends Sprite {
     constructor(x, y, width, height, image, partial, manager, canvas) {
@@ -410,8 +403,6 @@ export class SoundButton extends Sprite {
     }
 
     onclick() {
-        //TODO add toggle
-        console.log("SOUNDS");
         if (this.toState == "on")
             sounds.playAllTrack();
         else
@@ -434,19 +425,12 @@ export class Line extends Object {
 
         ctx.translate(this.x, this.y);
 
-        //testing
-        //ctx.arc(0, 0, 5, 0, 2 * Math.PI);
-        //ctx.fillStyle = 'blue';
-        //ctx.fill();
-
-
         ctx.rotate(this.rotation * Math.PI / 180);
 
         ctx.beginPath();
         ctx.lineWidth = this.width;
         ctx.strokeStyle = this.color;
         ctx.moveTo(0, 0);
-        //ctx.lineTo(this.endX - this.x, this.endY - this.y);
         ctx.lineTo(this.endX, this.endY);
         ctx.stroke();
         ctx.restore();

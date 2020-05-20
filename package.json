@@ -12,14 +12,10 @@
     "url": "git+https://github.com/Ztiap-mk/ztiap-project-madrent.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bence Mark Lukacs",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Ztiap-mk/ztiap-project-madrent/issues"
   },
   "homepage": "https://github.com/Ztiap-mk/ztiap-project-madrent#readme",
-  "devDependencies": {
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
-  }
 }
